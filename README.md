@@ -1,6 +1,6 @@
-# Scala + Swingで3D表示のテスト
+# Rust + Gtk+3で3D表示のテスト
 
-　ScalaでSwingと3Dのロジックのテストです。
+　RustでGtk+3と3Dのロジックのテストです。
 
 [Scala版](https://github.com/marony/scala3d_wireframe)を移植してみました。
 [C++版](https://github.com/marony/cpp3d)も作りました。
