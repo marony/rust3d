@@ -1,0 +1,19 @@
+[package]
+name = "rust3d"
+version = "0.1.0"
+authors = ["tada"]
+
+[dependencies]
+glib = "^0"
+gdk = "^0"
+gdk-pixbuf = "^0"
+gtk = "^0"
+cairo-rs = "^0"
+gio = "^0"
+scan-rules = "0.2.0"
+
+[features]
+#default = ["gtk_3_18"]
+gtk_3_10 = ["gtk/v3_10"]
+gtk_3_16 = ["gtk_3_10", "gtk/v3_16"]
+gtk_3_18 = ["gtk_3_16"] #for CI tools
