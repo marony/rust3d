@@ -22,6 +22,7 @@ impl Polygon3 {
         // 描画座標
 //        println!("{:?}", self);
         // 面
+        cr.save();
         cr.set_source_rgb(
             (color.r as f64) / 256.0f64,
             (color.g as f64) / 256.0f64,
@@ -32,6 +33,7 @@ impl Polygon3 {
         cr.line_to(self.p1.x, self.p1.y);
         cr.stroke_preserve();
         cr.fill();
+        cr.restore();
     }
 
     pub fn new(p1: &Point3, p2: &Point3, p3: &Point3) -> Polygon3 {

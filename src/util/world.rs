@@ -45,12 +45,21 @@ impl World {
 
     pub fn draw(&self, rotate: i32, cr: &cairo::Context) -> () {
         let r = 0.0f64;
+        cr.save();
         // ？？？
-        cr.scale(1.0f64, 1.0f64);
-        cr.translate(self.screen.size.width / 2.0f64, self.screen.size.height);
+        cr.scale(0.8f64, 0.8f64);
+        cr.translate(0.0f64, self.screen.size.height / 1.3f64);
         // 背景を塗る
-        cr.set_source_rgba(0.0f64, 0.0f64, 0.0f64, 1.0f64);
+        cr.set_source_rgb(0.0f64, 0.0f64, 0.0f64);
         cr.paint();
+        // デバッグ用
+        let recs = cr.copy_clip_rectangle_list();
+        let c = recs.rectangles.len();
+        for i in 0..c {
+            recs.rectangles.get(i).map(|rec|
+                println!("x = {}, y = {}, width = {}, height = {}", rec.x, rec.y, rec.width, rec.height)
+            );
+        }
         // ポリゴン群を投影面の座標に変換
         let mut v1: Vec<(Polygon3, Color)> = self.polygons.iter()
             .map(|&(p, c)|
@@ -83,5 +92,6 @@ impl World {
             .map(|(p, c)| (self.screen.convert_to_screen(&p), c))
             // 描画
             .for_each(|(p, c)| p.draw(cr, &c));
+        cr.restore();
     }
 }
